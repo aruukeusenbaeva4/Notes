@@ -27,6 +27,7 @@ class OnBoardFragment : Fragment() {
     private fun initView() {
         adapter = OnBoardAdapter(loadOnBoardData(), ::onStartBoard)
         binding.viewPager.adapter = adapter
+        binding.wormDotsIndicator.attachTo(binding.viewPager)
     }
     private fun onStartBoard(){
         findNavController().navigate(R.id.main)
@@ -36,15 +37,18 @@ class OnBoardFragment : Fragment() {
         return listOf<OnBoardModel>(
             OnBoardModel(
                 "Удобство" ,
-                "Создавайте заметки в два клика! Записывайте мысли, идеи и важные задачи мгновенно."
+                "Создавайте заметки в два клика! Записывайте мысли, идеи и важные задачи мгновенно.",
+                "lottie1.json"
             ),
             OnBoardModel(
                 "Организация" ,
-                "Организуйте заметки по папкам и тегам. Легко находите нужную информацию в любое время."
+                "Организуйте заметки по папкам и тегам. Легко находите нужную информацию в любое время.",
+                "lottie2.json"
             ),
             OnBoardModel(
             "Синхронизация" ,
-            "Синхронизация на всех устройствах. Доступ к записям в любое время и в любом месте."
+            "Синхронизация на всех устройствах. Доступ к записям в любое время и в любом месте.",
+            "lottie3.json"
         ))
     }
 }

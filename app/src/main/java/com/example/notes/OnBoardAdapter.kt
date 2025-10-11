@@ -35,6 +35,8 @@ class OnBoardAdapter(private val onBoardList: List<OnBoardModel>, val onStart:()
         fun onBind(onBoard: OnBoardModel){
             binding.theme.text = onBoard.theme
             binding.desc.text = onBoard.desc
+            binding.lottie.setAnimation(onBoard.lottie)
+            binding.lottie.playAnimation()
             if (adapterPosition == (onBoardList.size-1)){
                 binding.skip.visibility = View.INVISIBLE
                 binding.btnStart.setOnClickListener {
@@ -42,7 +44,7 @@ class OnBoardAdapter(private val onBoardList: List<OnBoardModel>, val onStart:()
                 }
             }else{
                 binding.btnStart.visibility = View.INVISIBLE
-                binding.theme.setOnClickListener {
+                binding.skip.setOnClickListener {
                     onStart()
                 }
             }

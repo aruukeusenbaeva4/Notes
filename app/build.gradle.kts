@@ -54,6 +54,9 @@ dependencies {
     implementation(libs.androidx.navigation.ui)
 
     //circle indicator
-    implementation(libs.circleindicator)
-    implementation(libs.androidx.viewpager2)
+    implementation(libs.dotsindicator)
+
+    //lottie
+    implementation(libs.lottie)
+
 }
