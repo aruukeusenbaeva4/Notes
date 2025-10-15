@@ -30,7 +30,7 @@ class OnBoardFragment : Fragment() {
         binding.wormDotsIndicator.attachTo(binding.viewPager)
     }
     private fun onStartBoard(){
-        findNavController().navigate(R.id.main)
+        findNavController().navigate(R.id.mainFragment)
     }
 
     private fun loadOnBoardData():List<OnBoardModel> {
