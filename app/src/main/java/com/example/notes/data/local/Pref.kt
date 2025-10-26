@@ -9,7 +9,7 @@ class Pref(context: Context) {
         context.getSharedPreferences("key_app", Context.MODE_PRIVATE);
 
     fun saveOnBoard(value:Boolean) {
-        pref.edit { putBoolean("keu_on_board", value)}
+        pref.edit { putBoolean("key_on_board", value)}
     }
     fun isUserSeen(): Boolean {
         return pref.getBoolean("key_on_board", false)
