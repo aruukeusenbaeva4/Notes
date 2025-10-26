@@ -1,5 +1,6 @@
 package com.example.notes
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,15 +8,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.notes.databinding.FragmentOnBoardBinding
+import kotlin.io.path.Path
 
 class OnBoardFragment : Fragment() {
    private lateinit var binding: FragmentOnBoardBinding
    private  lateinit var adapter: OnBoardAdapter
+   private lateinit var pref: Pref
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
             binding = FragmentOnBoardBinding.inflate(inflater, container, false)
+            pref = Pref(requireContext())
             return binding.root
     }
 
@@ -30,6 +35,7 @@ class OnBoardFragment : Fragment() {
         binding.wormDotsIndicator.attachTo(binding.viewPager)
     }
     private fun onStartBoard(){
+        pref.saveOnBoard(true)
         findNavController().navigate(R.id.mainFragment)
     }
 
