@@ -12,12 +12,14 @@ import com.example.notes.R
 import com.example.notes.data.local.Pref
 import com.example.notes.data.models.NotesModel
 import com.example.notes.databinding.FragmentMainBinding
+import com.example.notes.ui.main.MainFragmentDirections
 import com.example.notes.ui.main.adapter.NotesAdapter
 
 class MainFragment : Fragment() {
 
     private lateinit var binding: FragmentMainBinding
-    private val noteAdapter: NotesAdapter = NotesAdapter(::onLongClick)
+    private val noteAdapter: NotesAdapter = NotesAdapter(::onLongClick, ::onClick)
+
 
     private lateinit var pref: Pref
     override fun onCreateView(
@@ -50,9 +52,16 @@ class MainFragment : Fragment() {
         builder.show()
     }
 
+    private fun onClick(notesModel: NotesModel){
+        val action = MainFragmentDirections.actionMainFragmentToCreateNotesFragment(notesModel)
+        findNavController().navigate(action)
+    }
+
     private fun setupListener(){
         binding.btnCreate.setOnClickListener {
-            findNavController().navigate(R.id.createNotesFragment)
+            val action = MainFragmentDirections.actionMainFragmentToCreateNotesFragment(null)
+            findNavController().navigate(action)
+         //   findNavController().navigate(R.id.createNotesFragment)
         }
     }
 

@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.notes.data.models.NotesModel
 import com.example.notes.databinding.ItemNotesBinding
 
-class NotesAdapter(val onLongClick:(NotesModel) -> Unit): RecyclerView.Adapter<NotesAdapter.NotesViewHolder>() {
+class NotesAdapter(val onLongClick:(NotesModel) -> Unit,
+                   val onClick: (NotesModel) -> Unit):
+                RecyclerView.Adapter<NotesAdapter.NotesViewHolder>() {
     private val notesList = arrayListOf<NotesModel>();
 
     fun addNotes(notes: List<NotesModel>) {
@@ -47,6 +49,10 @@ class NotesAdapter(val onLongClick:(NotesModel) -> Unit): RecyclerView.Adapter<N
             itemView.setOnLongClickListener {
                 onLongClick(notesModel)
                 false
+            }
+
+            itemView.setOnClickListener {
+                onClick(notesModel)
             }
         }
     }
