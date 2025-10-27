@@ -7,16 +7,31 @@
 
     <fragment
         android:id="@+id/onBoardFragment"
-        android:name="com.example.notes.OnBoardFragment"
+        android:name="com.example.notes.ui.on_board.OnBoardFragment"
         android:label="fragment_on_board"
         tools:layout="@layout/fragment_on_board" >
         <action
             android:id="@+id/action_onBoardFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/back"/>
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.notes.MainFragment"
+        android:name="com.example.notes.ui.main.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_createNotesFragment"
+            app:destination ="@id/createNotesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createNotesFragment"
+        android:name="com.example.notes.ui.create_notes.CreateNotesFragment"
+        android:label="fragment_create"
+        tools:layout="@layout/fragment_create" >
+        <argument
+            android:name="note"
+            app:argType="com.example.notes.data.models.NotesModel"
+            app:nullable="true"/>
+    </fragment>
 </navigation>

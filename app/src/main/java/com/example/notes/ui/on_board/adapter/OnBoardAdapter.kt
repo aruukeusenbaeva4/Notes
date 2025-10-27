@@ -1,9 +1,10 @@
-package com.example.notes
+package com.example.notes.ui.on_board.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.notes.data.models.OnBoardModel
 import com.example.notes.databinding.ItemOnBoardBinding
 
 class OnBoardAdapter(private val onBoardList: List<OnBoardModel>, val onStart:()-> Unit): RecyclerView.Adapter<OnBoardAdapter.OnBoardViewHolder>() {
@@ -35,6 +36,8 @@ class OnBoardAdapter(private val onBoardList: List<OnBoardModel>, val onStart:()
         fun onBind(onBoard: OnBoardModel){
             binding.theme.text = onBoard.theme
             binding.desc.text = onBoard.desc
+            binding.lottie.setAnimation(onBoard.lottie)
+            binding.lottie.playAnimation()
             if (adapterPosition == (onBoardList.size-1)){
                 binding.skip.visibility = View.INVISIBLE
                 binding.btnStart.setOnClickListener {
@@ -42,7 +45,7 @@ class OnBoardAdapter(private val onBoardList: List<OnBoardModel>, val onStart:()
                 }
             }else{
                 binding.btnStart.visibility = View.INVISIBLE
-                binding.theme.setOnClickListener {
+                binding.skip.setOnClickListener {
                     onStart()
                 }
             }

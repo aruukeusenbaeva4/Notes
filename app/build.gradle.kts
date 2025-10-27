@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("androidx.navigation.safeargs.kotlin")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -54,6 +56,13 @@ dependencies {
     implementation(libs.androidx.navigation.ui)
 
     //circle indicator
-    implementation(libs.circleindicator)
-    implementation(libs.androidx.viewpager2)
+    implementation(libs.dotsindicator)
+
+    //lottie
+    implementation(libs.lottie)
+
+    //room
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.androidx.room.compiler)
+
 }
